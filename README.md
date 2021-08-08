@@ -1,11 +1,16 @@
 # Home Dashboard
 
+[![Release](https://github.com/camandel/home-dashboard/actions/workflows/release.yml/badge.svg)](https://github.com/camandel/home-dashboard/actions/workflows/release.yml)
+
 **Home Dashboard** is a simple startpage to keep track of your favourite servers, applications, links and personal tasks. It can be used as your default browser starting page. 
 This project is based on [SUI](https://github.com/jeroenpardon/sui).
 
 <p align="center">
   <img src="assets/screenshot.jpg?raw=true" alt="screenshot"/>
 </p>
+
+## Try it
+Live demo [here](https://camandel.github.io/home-dashboard/)
 
 ## Features
 - single page application
@@ -36,9 +41,9 @@ mv home-dashboard /var/www/html && systemctl start httpd
 ```
 cd home-dashboard && python -m http.server
 ```
-If you don't want to setup a web server you can use directly the tiny docker image (only 32 KB) which contains the code and an http server listening on port 8000:
+If you don't want to setup a web server you can use directly the tiny docker image (only 31 KB) which contains the code and an http server listening on port 8000:
 ```
-docker run --name home-dashboard -v $PWD/conf:/www/conf -p 8000:8000 -d camandel/home-dashboard
+docker run --name home-dashboard -v <your-volume-or-local-dir>:/www/conf -p 8000:8000 -d camandel/home-dashboard
 ```
 
 ## Configuration
