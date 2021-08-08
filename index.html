@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Home Dashboard</title>
+    <meta charset="utf-8">
+    <meta http-equiv="Default-Style" content="">
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+        name="viewport" />
+    <link rel="shortcut icon" type="image/svg" href="./static/img/logo-dark.svg" />
+    <link type="text/css" rel="stylesheet" href="./static/css/styles.css" media="screen,projection" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+    <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+</head>
+
+<body onload="loadFunctions()">
+
+    <main id="container">
+
+        <section id="header">
+            <div id="header_left">
+                <img src="./static/img/logo-light.svg" height=66px alt="">
+                <h1>Home Dashboard</h1>
+            </div>
+            <div id="header_right">
+                <h2 id="header_date"></h2>
+                <h1 id="header_clock"></h1>
+            </div>
+        </section>
+
+        <section id="apps">
+            <script type="text/handlebars-template" id="apps-template">
+            <h3>Applications</h3>
+            <div id="apps_loop">
+                {{#apps}}
+                    <div class="apps_item">
+                        <div class="apps_icon">
+                            <span class="iconify icon" data-icon="mdi-{{icon}}"></span>
+                        </div>
+                        <div class="apps_text">
+                            <a href="{{#if proto}}{{proto}}{{else}}https{{/if}}://{{url}}" target="_blank" rel="noopener noreferrer">{{name}}</a>
+                            <span id="app-address">{{#if descr}}{{descr}}{{else}}{{url}}{{/if}}</span>
+                            
+                        </div>
+                    </div>
+                {{/apps}}                         
+            </div>
+            </script>
+        </section>
+
+        <section id="links">
+            <script type="text/handlebars-template" id="links-template">
+            <h3>Bookmarks</h3>
+            <div id="links_loop">
+                {{#bookmarks}}
+                    <div id="links_item">
+                        <h4>{{category}}</h4>
+                        {{#links}}
+                            <a href="{{url}}" target="_blank" rel="noopener noreferrer" class="theme_color-border theme_text-select">{{name}}</a>
+                        {{/links}}
+                    </div>
+                {{/bookmarks}}
+            </div>    
+            </script>
+        </section>
+        <!--  -->
+        <section id=tasks>
+            <h3>TO-DO List</h3>
+            <div>
+                <template id="task">
+                    <li class="task tasks__task">
+                        <label class="task__label">
+                            <input class="task__checkbox" type="checkbox" />
+
+                            <span class="task__checkbox-custom"></span>
+                        </label>
+
+                        <p class="task__text" contenteditable></p>
+
+                        <button class="btn btn--del task__delete" type="button">
+                            <span class="iconify icon" data-icon="mdi-trash-can"></span>
+                        </button>
+                    </li>
+                </template>
+
+                <div class="container">
+                    <ul class="tasks"></ul>
+
+                    <form class="create-task">
+                        <textarea class="create-task__textarea" placeholder="Task description"></textarea>
+
+                        <button class="btn btn--create create-task__submit" type="submit">
+                            Create
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <script src="./static/js/localstorage.js" type="module"></script>
+            <script src="./static/js/todo.js" type="module"></script>
+        </section>
+    </main>
+
+    <script src="./static/js/data.js" type="text/javascript"></script>
+    <script src="./static/js/script.js" type="text/javascript"></script>
+
+
+</body>
+
+</html>
